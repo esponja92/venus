@@ -28,6 +28,11 @@ class Interpretador(object):
                 termos.remove(artigo)
 
         acao = ''
+
+        if len(termos) != 2:
+            raise InterpretadorException(
+                "Informe uma palavra para uma AÇÃO e uma palavra para um OBJETO")
+
         if termos[0] in Acao.tradutor.keys():
             acao = Acao.getAcao(termos[0])
         else:
