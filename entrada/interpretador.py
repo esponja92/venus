@@ -41,9 +41,8 @@ class Interpretador(object):
             raise InterpretadorException(
                 "Objeto não reconhecido pelo interpretador.")
 
-        comando = Comando(acao, objeto)
-        if((comando.obtemAcao() == Acao.SAIR)and(comando.obtemObjeto() == Objeto.JOGO)):
+        if((acao == Acao.SAIR)and(objeto == Objeto.JOGO)):
             print("Até logo!")
             sys.exit()
-        else:
-            return comando
+
+        return Comando(acao, objeto)
