@@ -1,3 +1,4 @@
+import sys
 from entrada.comando import Comando
 from custom_exceptions.entrada_exceptions import *
 from entrada.acao import Acao
@@ -15,6 +16,7 @@ class Interpretador(object):
         pass
 
     def obtemComando(self):
+        print("O que você deseja fazer?")
         entrada_do_jogador = input("=> ")
         termos = entrada_do_jogador.lower().split()
         for preposicao in self.PREPOSICOES:
@@ -39,4 +41,9 @@ class Interpretador(object):
             raise InterpretadorException(
                 "Objeto não reconhecido pelo interpretador.")
 
-        return Comando(acao, objeto)
+        comando = Comando(acao, objeto)
+        if((comando.obtemAcao() == Acao.SAIR)and(comando.obtemObjeto() == Objeto.JOGO)):
+            print("Até logo!")
+            sys.exit()
+        else:
+            return comando

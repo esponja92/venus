@@ -1,21 +1,22 @@
-import sys
 from entrada.interpretador import Interpretador
-from entrada.comando import Comando
-from entrada.acao import Acao
-from entrada.objeto import Objeto
-from entrada import *
+
 from custom_exceptions.entrada_exceptions import *
+from cenas.cena_um import CenaUm
 
 if __name__ == "__main__":
 
     interpretador = Interpretador()
+    cena = CenaUm(interpretador)
 
     # loop principal
-    while(1):
-        print("O que você deseja fazer?")
+    while(cena.acabou() == False):
         try:
-            comando = interpretador.obtemComando()
-            if((comando.obtemAcao() == Acao.SAIR)and(comando.obtemObjeto() == Objeto.JOGO)):
-                sys.exit()
+            cena = cena.obtemProximaCena()
+
         except (InterpretadorException, Exception) as e:
             print("Erro => "+str(e))
+
+    print('''
+    "Vênus" por Hugo de Mello Dantas
+    março/2020
+    ''')
