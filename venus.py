@@ -5,8 +5,7 @@ from cenas.cena_um import CenaUm
 
 if __name__ == "__main__":
 
-    interpretador = Interpretador()
-    cena = CenaUm(interpretador)
+    cena = CenaUm()
 
     # loop principal
     while(cena.acabou() == False):

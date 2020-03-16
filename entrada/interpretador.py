@@ -3,8 +3,9 @@ from entrada.comando import Comando
 from custom_exceptions.entrada_exceptions import *
 from entrada.acao import Acao
 from entrada.objeto import Objeto
+from entrada.singleton import Singleton
 
-
+@Singleton
 class Interpretador(object):
 
     PREPOSICOES = ['a', 'ante', 'após', 'até', 'com', 'contra', 'de', 'do', 'da', 'dos', 'das', 'dum', 'duns', 'duma', 'dumas', 'desde', 'em', 'no', 'na',
